@@ -17,7 +17,7 @@ router.post("/insertStudents", async (req, res) => {
     if (response && response.data) {
       res.status(200).json(response);
     } else {
-      throw "Insert unsuccessful";
+      throw "Insert unsuccessful - "+ response.status;
     }
   } catch (err) {
     console.log("Error in insert - ", err);
@@ -39,7 +39,7 @@ router.put("/updateStudents", async (req, res) => {
       if (response && response.data) {
         res.status(200).json(response);
       } else {
-        throw "Update unsuccessful";
+        throw "Update unsuccessful - "+response.status;
       }
     } catch (err) {
       console.log("Error in Update - ", err);

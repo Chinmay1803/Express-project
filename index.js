@@ -1,8 +1,10 @@
 const express = require("express");
 const bodyparser = require("body-parser");
+const cors = require("cors");
 const connection = require("./config/sql");
 const app = express();
 
+app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
@@ -12,8 +14,8 @@ app.get("/", (_, res) => {
   res.send("Hello World");
 });
 
-const studentRoute = require('./controller/students');
-app.use('/student', studentRoute);
+const studentRoute = require("./controller/students");
+app.use("/student", studentRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening in port ${port}`);
